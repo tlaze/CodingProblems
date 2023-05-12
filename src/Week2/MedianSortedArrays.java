@@ -30,11 +30,47 @@ package Week2;
 //
 //        -106 <= nums1[i], nums2[i] <= 106
 
+import java.util.Arrays;
+
 public class MedianSortedArrays{
 
     public static void main(String[] args){
-        System.out.println("hello");
+        int[] nums1 = {1,3};
+        int[] nums2 = {2};
+
+        int[] nums3 = {1,2};
+        int[] nums4 = {3,4};
+
+        System.out.println(medianSortedArrays(nums1, nums2));
+        System.out.println(medianSortedArrays(nums3, nums4));
     }
 
+    public static double medianSortedArrays(int[] x, int[] y){
 
+//        Creates a new array with the length of both arrays lengths added together
+        int[] merged = new int[x.length + y.length];
+
+//        Adds each value of the first array into the merged array
+        for(int i = 0; i < x.length; i++){
+            merged[i] = x[i];
+        }
+
+//        Adds the values of the second array into the previous array. Starts out at the first arrays index and iterates the length of the second array
+        for(int j = 0; j < y.length; j++){
+            merged[x.length + j] = y[j];
+        }
+//        Uses java.util.Arrays to sort the merged array
+        Arrays.sort(merged);
+
+//        Finds the sum of the merged array
+        double sum = 0;
+        for(int k: merged){
+            sum += k;
+        }
+
+//        Divides the sum of the values in the merged array by the array's length
+        double mergedMedian = sum / merged.length;
+
+        return mergedMedian;
+    }
 }
