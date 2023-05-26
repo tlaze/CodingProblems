@@ -1,5 +1,7 @@
 package Week4;
 
+import java.util.Scanner;
+
 //Write a program that accepts sets of three numbers, and prints the second-maximum number among the three.
 //
 //        Input
@@ -67,4 +69,18 @@ package Week4;
 //        Explanation
 //        The digits in this string are 1, 2, 3 and 1. Hence, the sum of all of them is 7.
 public class SecondMax {
+
+    public static void main(String[] args){
+        System.out.println(secondMax(5,6,10));
+    }
+
+    public static int secondMax(int num1, int num2, int num3){
+
+        int max = Math.max(num1, Math.max(num2, num3));
+        int min = Math.min(num1, Math.min(num2, num3));
+
+        int secondMax = num1 + num2 + num3 - max - min;
+
+        return secondMax;
+    }
 }
